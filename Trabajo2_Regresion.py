@@ -25,7 +25,7 @@ st.markdown(
         .sub-title {
             text-align: center;
             font-size: 18px;
-            color: #566573;
+            color: #ffffff;
         }
         .stButton>button {
             background-color: #2E86C1;
@@ -54,7 +54,7 @@ st.markdown(
 
 # Interfaz en Streamlit
 def main():
-    st.markdown("<h1 class='main-title'>Predicción del Precio de Casas Cercanas al Mar</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-title'>Predicción del precio de casas en Boston </h1>", unsafe_allow_html=True)
     st.markdown("<p class='sub-title'>El modelo final utiliza el método de clasificación basado en el voto de k-vecinos más cercanos con los hiperparámetros <b>n_neighbors: 4, p: 3</b>.</p>", unsafe_allow_html=True)
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown("### Ingrese las características de la casa para obtener la predicción")
