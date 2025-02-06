@@ -10,12 +10,55 @@ def load_model():
         model = pickle.load(f)
     return model
 
+# Estilos CSS personalizados
+st.markdown(
+    """
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: 'Arial', sans-serif;
+        }
+        .main-title {
+            text-align: center;
+            color: #2E86C1;
+        }
+        .sub-title {
+            text-align: center;
+            font-size: 18px;
+            color: #566573;
+        }
+        .stButton>button {
+            background-color: #2E86C1;
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .stButton>button:hover {
+            background-color: #1A5276;
+        }
+        .prediction-box {
+            text-align: center;
+            font-size: 24px;
+            color: #154360;
+            font-weight: bold;
+            background-color: #D6EAF8;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Interfaz en Streamlit
 def main():
-    st.title("Predecir el precio de una casa cercana al mar")
-    st.markdown("El modelo final fue desarrollado con el metodo de clasificación implementa el voto de k- vecinos más cercanos con los hiperparametros n_neighbors:4, p:3")
-    st.markdown("Indique las características de la casa para hacer la predicción")
-
+    st.markdown("<h1 class='main-title'>Predicción del Precio de Casas Cercanas al Mar</h1>", unsafe_allow_html=True)
+    st.markdown("<p class='sub-title'>El modelo final utiliza el método de clasificación basado en el voto de k-vecinos más cercanos con los hiperparámetros <b>n_neighbors: 4, p: 3</b>.</p>", unsafe_allow_html=True)
+    st.markdown("<hr>", unsafe_allow_html=True)
+    st.markdown("### Ingrese las características de la casa para obtener la predicción")
+    
     # Entrada de datos por el usuario
     crim = st.number_input("Tasa de criminalidad per cápita", min_value=0.0, format="%.5f")
     zn = st.number_input("Proporción de terrenos residenciales", min_value=0.0, format="%.2f")
@@ -30,13 +73,13 @@ def main():
     ptratio = st.number_input("Ratio de alumnos por profesor", min_value=0.0, format="%.1f")
     b = st.number_input("Proporción de residentes afroamericanos", min_value=0.0, format="%.2f")
     lstat = st.number_input("Porcentaje de población con bajo nivel socioeconómico", min_value=0.0, format="%.2f")
-
+    
     # Botón para realizar la predicción
     if st.button("Realizar predicción"):
         model = load_model()
         input_data = np.array([[crim, zn, indus, chas, nox, rm, age, dis, rad, tax, ptratio, b, lstat]])
         prediction = model.predict(input_data)[0]
-        st.markdown(f"### El valor estimado de la casa es: **${prediction * 1000:.2f} USD**")
+        st.markdown(f"<div class='prediction-box'>El valor estimado de la casa es: <br> <b>${prediction * 1000:.2f} USD</b></div>", unsafe_allow_html=True)
 
 if __name__ == '__main__':
     main()
