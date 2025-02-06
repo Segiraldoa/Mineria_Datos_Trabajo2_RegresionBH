@@ -13,7 +13,7 @@ def load_model():
 # Interfaz en Streamlit
 def main():
     st.title("Predecir el precio de una casa cercana al mar")
-    st.markdown("Los hiperparametros del mejor modelo son: ")
+    st.markdown("El modelo final fue desarrollado con el metodo de clasificación implementa el voto de k- vecinos más cercanos con los hiperparametros n_neighbors:4, p:3")
     st.markdown("Indique las características de la casa para hacer la predicción")
 
     # Entrada de datos por el usuario
