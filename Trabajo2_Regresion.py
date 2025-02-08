@@ -55,7 +55,7 @@ st.markdown(
 # Interfaz en Streamlit
 def main():
     st.markdown("<h1 class='main-title'>Predicción del precio de casas en Boston</h1>", unsafe_allow_html=True)
-    st.markdown("<p class='sub-title'>El modelo final utiliza el método de clasificación basado en el voto de k-vecinos más cercanos con los hiperparámetros <b>n_neighbors: 4, p: 3</b>.</p>", unsafe_allow_html=True)
+    st.markdown("<p class='sub-title'>Este modelo escala los datos con StandarScaler y utiliza el método Kernel Ridge Regression con hiperparámetros alpha:0.1 y kernel:rbf", unsafe_allow_html=True)
     st.markdown("<hr>", unsafe_allow_html=True)
     st.markdown("### Ingrese las características de la casa para obtener la predicción")
     
